@@ -1,0 +1,221 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.panel {
+  position: relative;
+  width: fit-content;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 10px 22px;
+  border-radius: 16px;
+  background: rgba(11, 13, 16, 0.92);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.35);
+  font-family: "Inter", system-ui, sans-serif;
+  transition: outline-color 120ms ease;
+  outline: 1px solid transparent;
+}
+
+body.unlocked .panel {
+  outline-color: rgba(255, 255, 255, 0.25);
+  cursor: grab;
+}
+
+.chip {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.chip.hidden {
+  display: none;
+}
+
+.x-button {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #f5f3ef;
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease, background 120ms ease;
+}
+
+.x-button:hover {
+  background: rgba(255, 77, 77, 0.65);
+}
+
+.panel-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 2;
+}
+
+body.unlocked .panel-close {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.chip-remove {
+  position: absolute;
+  top: -3px;
+  right: 4px;
+  z-index: 1;
+}
+
+body.unlocked .chip:hover .chip-remove {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ring-wrap {
+  position: relative;
+  width: 36px;
+  height: 36px;
+}
+
+.ring {
+  width: 36px;
+  height: 36px;
+  transform: rotate(-90deg);
+}
+
+.ring-track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 7.5;
+}
+
+.ring-progress {
+  fill: none;
+  stroke-width: 7.5;
+  stroke-linecap: butt;
+  stroke-dasharray: 81.68;
+  stroke-dashoffset: 81.68;
+  transition: stroke-dashoffset 400ms ease, stroke 200ms ease;
+}
+
+#chip-claude .ring-progress {
+  stroke: #e8622c;
+}
+
+#chip-cursor .ring-progress {
+  stroke: #5b8def;
+}
+
+#chip-codex .ring-progress {
+  stroke: #10a37f;
+}
+
+.chip.critical .ring-progress {
+  stroke: #ff4d4d;
+  filter: drop-shadow(0 0 6px rgba(255, 77, 77, 0.55));
+}
+
+.chip.critical .reset {
+  color: #ff4d4d;
+}
+
+.chip.stale .ring-wrap,
+.chip.stale .reset {
+  opacity: 0.45;
+}
+
+.ring-value {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 12px;
+  color: #f5f3ef;
+}
+
+.label {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #8a8f98;
+}
+
+.reset {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 8.5px;
+  color: #8a8f98;
+}
+
+.context-menu {
+  position: fixed;
+  min-width: 180px;
+  padding: 6px;
+  border-radius: 10px;
+  background: rgba(20, 22, 26, 0.98);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5);
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: "Inter", system-ui, sans-serif;
+  z-index: 10;
+}
+
+.context-menu.hidden {
+  display: none;
+}
+
+.menu-item {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #f5f3ef;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.menu-quit:hover {
+  background: rgba(255, 77, 77, 0.25);
+}
+
+.menu-separator {
+  height: 1px;
+  margin: 4px 4px;
+  background: rgba(255, 255, 255, 0.1);
+}

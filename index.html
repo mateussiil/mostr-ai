@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mostr-ai</title>
+    <script type="module" src="/src/main.ts" defer></script>
+  </head>
+  <body>
+    <div id="panel" class="panel">
+      <button class="x-button panel-close" id="panel-close" title="Fechar mostr-ai">×</button>
+
+      <div class="chip" id="chip-claude">
+        <button class="x-button chip-remove" data-provider="claude" title="Ocultar até reiniciar">×</button>
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 36 36">
+            <circle class="ring-track" cx="18" cy="18" r="13" />
+            <circle class="ring-progress" cx="18" cy="18" r="13" />
+          </svg>
+          <span class="ring-value" id="value-claude">--</span>
+        </div>
+        <span class="label">claude</span>
+        <span class="reset" id="reset-claude">&nbsp;</span>
+      </div>
+      <div class="chip" id="chip-cursor">
+        <button class="x-button chip-remove" data-provider="cursor" title="Ocultar até reiniciar">×</button>
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 36 36">
+            <circle class="ring-track" cx="18" cy="18" r="13" />
+            <circle class="ring-progress" cx="18" cy="18" r="13" />
+          </svg>
+          <span class="ring-value" id="value-cursor">--</span>
+        </div>
+        <span class="label">cursor</span>
+        <span class="reset" id="reset-cursor">&nbsp;</span>
+      </div>
+      <div class="chip" id="chip-codex">
+        <button class="x-button chip-remove" data-provider="codex" title="Ocultar até reiniciar">×</button>
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 36 36">
+            <circle class="ring-track" cx="18" cy="18" r="13" />
+            <circle class="ring-progress" cx="18" cy="18" r="13" />
+          </svg>
+          <span class="ring-value" id="value-codex">--</span>
+        </div>
+        <span class="label">codex</span>
+        <span class="reset" id="reset-codex">&nbsp;</span>
+      </div>
+    </div>
+
+    <div id="context-menu" class="context-menu hidden">
+      <label class="menu-item">
+        <input type="checkbox" id="menu-autostart" />
+        Iniciar com o Windows
+      </label>
+      <div class="menu-separator"></div>
+      <button class="menu-item menu-quit" id="menu-quit">Sair</button>
+    </div>
+  </body>
+</html>
